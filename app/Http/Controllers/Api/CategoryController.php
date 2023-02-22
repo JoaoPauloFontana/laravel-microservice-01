@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
         $response = $this->service->update($slug, $data);
 
-        return response()->json(['updated' => $response]);//
+        return response()->json(['updated' => $response]);
     }
 
     /**
@@ -82,6 +82,6 @@ class CategoryController extends Controller
     {
         $response = $this->service->delete($slug);
 
-        return response()->json(['deleted' => $response], 204);//
+        return response()->json(['deleted' => $response], 204);
     }
 }
