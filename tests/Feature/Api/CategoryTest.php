@@ -53,4 +53,38 @@ class CategoryTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * Validation store category
+     *
+     * @return void
+     */
+    public function test_validations_store_category()
+    {
+        $category = Category::factory()->create();
+
+        $response = $this->postJson($this->endpoint, [
+            'title' => '',
+            'description' => ''
+        ]);
+
+        $response->assertStatus(422);
+    }
+
+    /**
+     * Store category
+     *
+     * @return void
+     */
+    public function test_store_category()
+    {
+        $category = Category::factory()->create();
+
+        $response = $this->postJson($this->endpoint, [
+            'title' => 'Category teste 01',
+            'description' => 'Category teste 01 description'
+        ]);
+
+        $response->assertStatus(201);
+    }
 }
