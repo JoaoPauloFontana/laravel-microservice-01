@@ -37,8 +37,9 @@ class CompanyController extends Controller
     public function store(StoreUpdateCompany $request): object
     {
         $data = $request->all();
+        $image = $request->image;
 
-        $category = $this->companyService->create($data);
+        $category = $this->companyService->create($data, $image);
 
         return new CompanyResource($category);
     }
@@ -66,8 +67,9 @@ class CompanyController extends Controller
     public function update(Request $request, string $uuid): object
     {
         $data = $request->all();
+        $image = $request->image;
 
-        $response = $this->companyService->update($uuid, $data);
+        $response = $this->companyService->update($uuid, $data, $image);
 
         return response()->json(['updated' => $response]);
     }

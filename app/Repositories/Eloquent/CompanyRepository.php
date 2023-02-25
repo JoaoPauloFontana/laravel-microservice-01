@@ -29,6 +29,15 @@ class CompanyRepository implements CompanyRepositoryInterface
         return $companies;
     }
 
+    public function getCompanyByUUID(string $uuid): ?object
+    {
+        $company = $this->company
+                            ->where('uuid', $uuid)
+                                ->first();
+
+        return $company;
+    }
+
     public function create(array $data): object
     {
         $company = $this->company->create($data);
