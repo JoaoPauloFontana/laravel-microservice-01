@@ -86,9 +86,9 @@ class CompanyTest extends TestCase
             $this->endpoint,
             [
                 'category_id' => $category->id,
-                'name' => 'EspecializaTi',
-                'email' => 'contato@especializati.com.br',
-                'whatsapp' => '64981701406',
+                'name' => 'João Paulo',
+                'email' => 'jpfontana12@icloud.com',
+                'whatsapp' => '91999999999',
             ],
             [],
             ['image' => $image]
@@ -109,9 +109,9 @@ class CompanyTest extends TestCase
 
         $data = [
             'category_id' => $category->id,
-            'name' => 'EspecializaTi',
-            'email' => 'contato@especializati.com.br',
-            'whatsapp' => '64981701406',
+            'name' => 'João Paulo',
+            'email' => 'jpfontana12@icloud.com',
+            'whatsapp' => '91999999999',
         ];
 
         $response = $this->putJson("$this->endpoint/fake-company", $data);
