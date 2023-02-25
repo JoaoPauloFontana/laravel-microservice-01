@@ -61,8 +61,6 @@ class CategoryTest extends TestCase
      */
     public function test_validations_store_category()
     {
-        $category = Category::factory()->create();
-
         $response = $this->postJson($this->endpoint, [
             'title' => '',
             'description' => ''
@@ -78,13 +76,35 @@ class CategoryTest extends TestCase
      */
     public function test_store_category()
     {
-        $category = Category::factory()->create();
-
         $response = $this->postJson($this->endpoint, [
             'title' => 'Category teste 01',
             'description' => 'Category teste 01 description'
         ]);
 
         $response->assertStatus(201);
+    }
+
+    /**
+     * Update category
+     *
+     * @return void
+     */
+    public function test_update_category()
+    {
+        $category = Category::factory()->create();
+
+        $data = [
+            'title' => 'Test updated',
+            'description' => 'Teste updated'
+        ];
+
+        $response = $this->putJson("$this->endpoint/fake-category", $data);
+        $response->assertStatus(404);
+
+        $response = $this->putJson("$this->endpoint/{$category->url}", []);
+        $response->assertStatus(422);
+
+        $response = $this->putJson("$this->endpoint/{$category->url}", $data);
+        $response->assertStatus(200);
     }
 }
